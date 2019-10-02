@@ -7,10 +7,10 @@ def branchName
 node {
     try {
         stage('Build') {
-            steps {
+
                 checkout scm
                 bat 'mvn -B -DskipTests clean package'
-            }
+
         }
     }
     catch (def e) {
