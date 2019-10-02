@@ -9,6 +9,7 @@ node {
         stage('Collect info') {
             checkout scm
 
+
             bat 'mvn -v'
         }
     }
