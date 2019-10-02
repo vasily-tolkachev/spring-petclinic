@@ -4,16 +4,12 @@
 def commitId
 def branchName
 
-@Library('jenkins-pipeline-shared-lib-sample')_
-
 node {
     try {
         stage('Collect info') {
+            checkout scm
 
-            printBuildinfo {
-                name = "Sample Name"
-            }
-            checkStatus()
+            bat 'mvn -v'
         }
     }
     catch (def e) {
