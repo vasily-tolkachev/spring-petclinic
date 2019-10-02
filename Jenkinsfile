@@ -1,12 +1,21 @@
-pipeline {
+#!groovy
 
-    agent any
+// SCM parameters
+def commitId
+def branchName
 
-    stages {
-        stage('st 1') {
-            steps {
-                echo 'smth'
-            }
+node {
+    try {
+        stage('Collect info') {
+            checkout scm
+
+            commitId = gitUtils.getCommitId()
+            branchName = gitUtils.getBranchName()
+            echo "${branchName}"
         }
+    }
+    catch (def e) {
+        echo e.toString()
+        currentBuild.result = 'FAILURE'
     }
 }
