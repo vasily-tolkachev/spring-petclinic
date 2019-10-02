@@ -9,7 +9,7 @@ node {
         stage('Build') {
             steps {
                 checkout scm
-                sh 'mvn -B -DskipTests clean package'
+                bat 'mvn -B -DskipTests clean package'
             }
         }
     }
