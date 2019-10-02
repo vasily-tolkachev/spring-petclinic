@@ -6,11 +6,10 @@ def branchName
 
 node {
     try {
-        stage('Collect info') {
-            checkout scm
-
-
-            bat 'mvn -v'
+        stage('Build') {
+            steps {
+                sh 'mvn -B -DskipTests clean package'
+            }
         }
     }
     catch (def e) {
