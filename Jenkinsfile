@@ -4,14 +4,16 @@
 def commitId
 def branchName
 
+@Library('jenkins-pipeline-shared-lib-sample')_
+
 node {
     try {
         stage('Collect info') {
-            checkout scm
 
-            commitId = gitUtils.getCommitId()
-            branchName = gitUtils.getBranchName()
-            echo "${branchName}"
+            printBuildinfo {
+                name = "Sample Name"
+            }
+            checkStatus()
         }
     }
     catch (def e) {
