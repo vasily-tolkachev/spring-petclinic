@@ -25,7 +25,7 @@ pipeline {
             agent any
             steps {
                 withSonarQubeEnv('sonar') {
-                    sh 'mvn sonar:sonar'
+                    bat 'mvn sonar:sonar'
                 }
             }
          }
@@ -37,6 +37,9 @@ pipeline {
                 body: '$DEFAULT_CONTENT',
                 recipientProviders: [culprits()],
                 subject: '$DEFAULT_SUBJECT'
-       }
+        }
+        success {
+            tag = VersionNumber (versionNumberString: '${BUILD_DATE_FORMATTED, "yyyyMMdd"}-develop-${BUILDS_TODAY}')
+        }
     }
 }
