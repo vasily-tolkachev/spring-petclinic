@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers {
-        pollSCM '* * * * *'
+        pollSCM 'H/5 * * * *'
     }
     environment {
         versionNumberString = VersionNumber projectStartDate: '',
@@ -12,7 +12,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo versionNumberString
                 bat 'mvn -B -DskipTests clean package'
             }
         }
@@ -36,7 +35,6 @@ pipeline {
                 }
             }
          }
-
     }
     post {
         failure {
