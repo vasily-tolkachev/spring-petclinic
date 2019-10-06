@@ -4,13 +4,12 @@ pipeline {
         pollSCM '* * * * *'
      }
     stages {
-    /*
-        stage('Test') {
+
+        stage('Email') {
             steps {
                 emailext body: 'dsvdsvs', subject: 'Test ', to: 'vasilii_tolkachev@epam.com'
             }
         }
-        */
 
 
         stage('Build') {
