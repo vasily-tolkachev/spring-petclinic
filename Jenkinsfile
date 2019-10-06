@@ -7,6 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'mvn -B -DskipTests clean package'
+                versionNumberString = VersionNumber (versionNumberString: '1.0.${BUILDS_ALL_TIME}')
             }
         }
 
@@ -37,9 +38,6 @@ pipeline {
                 body: '$DEFAULT_CONTENT',
                 recipientProviders: [culprits()],
                 subject: '$DEFAULT_SUBJECT'
-        }
-        success {
-            versionNumberString = VersionNumber (versionNumberString: '1.0.${BUILDS_ALL_TIME}')
         }
     }
 }
