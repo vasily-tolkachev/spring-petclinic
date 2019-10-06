@@ -15,6 +15,7 @@ pipeline {
 
         stage('Build') {
             steps {
+
                         echo 'This will always run'
                 //bat 'mvn -B -DskipTests clean package'
             }
