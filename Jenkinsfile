@@ -4,11 +4,15 @@ pipeline {
         pollSCM '* * * * *'
     }
     environment {
-        versionNumberString = VersionNumber (versionNumberString: '1.0.${BUILDS_THIS_YEAR}')
+        versionNumberString = VersionNumber projectStartDate: '',
+            versionNumberString: '${BUILDS_THIS_YEAR}',
+            versionPrefix: '1.0.',
+            worstResultForIncrement: 'SUCCESS'
     }
     stages {
         stage('Build') {
             steps {
+                echo versionNumberString
                 bat 'mvn -B -DskipTests clean package'
             }
         }
