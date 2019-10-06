@@ -12,12 +12,14 @@ pipeline {
         }
         */
 
-         /*
+
         stage('Build') {
             steps {
-                bat 'mvn -B -DskipTests clean package'
+                        echo 'This will always run'
+                //bat 'mvn -B -DskipTests clean package'
             }
         }
+            /*
 
         stage('Test') {
             steps {
