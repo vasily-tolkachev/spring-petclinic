@@ -34,8 +34,9 @@ pipeline {
         }
 
         stage('Email') {
-            echo GIT_COMMITTER_EMAIL
+
             steps {
+                  echo GIT_COMMITTER_EMAIL
                 emailext body: '''${SCRIPT, template="jenkins-matrix-email-html.template"}''',
                                 subject: "[Jenkins] REPORT",
                                 to: "vasilii_tolkachev@epam.com"
