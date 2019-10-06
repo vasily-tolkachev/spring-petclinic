@@ -36,10 +36,12 @@ pipeline {
         stage('Email') {
 
             steps {
-                  echo GIT_COMMITTER_EMAIL
+            emailext attachLog: true, body: '', recipientProviders: [brokenBuildSuspects()], subject: 'Build result'
+              /*    echo GIT_COMMITTER_EMAIL
                 emailext body: '''${SCRIPT, template="jenkins-matrix-email-html.template"}''',
                                 subject: "[Jenkins] REPORT",
                                 to: "vasilii_tolkachev@epam.com"
+                                */
             }
         }
                     /*
