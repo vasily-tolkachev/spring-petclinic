@@ -4,20 +4,20 @@ pipeline {
         pollSCM '* * * * *'
      }
     stages {
-
+/*
         stage('Email') {
             steps {
                 emailext body: 'dsvdsvs', subject: 'Test ', to: 'vasilii_tolkachev@epam.com'
             }
         }
 
-
+*/
 
         stage('Build') {
             steps {
 
                         echo 'This will always run'
-                //bat 'mvn -B -DskipTests clean package'
+                sh 'mvn -B -DskipTests clean package'
             }
         }
             /*
