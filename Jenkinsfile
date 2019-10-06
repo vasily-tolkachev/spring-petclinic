@@ -39,7 +39,7 @@ pipeline {
                 subject: '$DEFAULT_SUBJECT'
         }
         success {
-            tag = VersionNumber (versionNumberString: '${BUILD_DATE_FORMATTED, "yyyyMMdd"}-develop-${BUILDS_TODAY}')
+            versionNumberString = VersionNumber (versionNumberString: '1.0.${BUILDS_ALL_TIME}')
         }
     }
 }
