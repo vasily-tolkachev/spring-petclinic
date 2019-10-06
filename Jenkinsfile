@@ -35,7 +35,7 @@ pipeline {
         failure {
             emailext attachLog: true,
                 body: '$DEFAULT_CONTENT',
-                recipientProviders: [brokenBuildSuspects()],
+                recipientProviders: [upstreamDevelopers()],
                 subject: '$DEFAULT_SUBJECT'
        }
     }
