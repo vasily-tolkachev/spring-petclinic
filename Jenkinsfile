@@ -35,7 +35,7 @@ pipeline {
 
         stage('Email') {
             steps {
-                emailext body: '''${SCRIPT, template="build-report.groovy"}''',
+                emailext body: '''${SCRIPT, template="jenkins-matrix-email-html.template"}''',
                                 subject: "[Jenkins] REPORT",
                                 to: "vasilii_tolkachev@epam.com"
             }
