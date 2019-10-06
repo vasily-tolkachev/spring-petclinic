@@ -3,11 +3,13 @@ pipeline {
     triggers {
         pollSCM '* * * * *'
     }
+    environment {
+        versionNumberString = VersionNumber (versionNumberString: '1.0.${BUILDS_THIS_YEAR}')
+    }
     stages {
         stage('Build') {
             steps {
                 bat 'mvn -B -DskipTests clean package'
-                versionNumberString = VersionNumber (versionNumberString: '1.0.${BUILDS_ALL_TIME}')
             }
         }
 
