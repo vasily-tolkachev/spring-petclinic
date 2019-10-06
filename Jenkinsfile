@@ -36,7 +36,10 @@ pipeline {
         stage('Email') {
 
             steps {
-            emailext attachLog: true, body: '', recipientProviders: [brokenBuildSuspects()], subject: 'Build result'
+            emailext attachLog: true,
+                     body: '$DEFAULT_CONTENT',
+                     recipientProviders: [brokenTestsSuspects(), brokenBuildSuspects(), developers()],
+                     subject: '$DEFAULT_SUBJECT'
               /*    echo GIT_COMMITTER_EMAIL
                 emailext body: '''${SCRIPT, template="jenkins-matrix-email-html.template"}''',
                                 subject: "[Jenkins] REPORT",
