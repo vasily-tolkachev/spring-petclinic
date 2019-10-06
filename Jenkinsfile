@@ -1,8 +1,8 @@
 pipeline {
     agent any
-     triggers {
+    triggers {
         pollSCM '* * * * *'
-     }
+    }
     stages {
         stage('Build') {
             steps {
@@ -35,7 +35,7 @@ pipeline {
         failure {
             emailext attachLog: true,
                 body: '$DEFAULT_CONTENT',
-                recipientProviders: [upstreamDevelopers()],
+                recipientProviders: [culprits()],
                 subject: '$DEFAULT_SUBJECT'
        }
     }
