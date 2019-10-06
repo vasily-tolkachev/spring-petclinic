@@ -27,7 +27,7 @@ pipeline {
             agent any
             steps {
                 withSonarQubeEnv('sonar') {
-                    bat 'sonar:sonar'
+                    bat 'mvn sonar:sonar'
                 }
             }
          }
