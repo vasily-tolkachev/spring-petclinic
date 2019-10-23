@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'smth'
+                echo 'smth1'
                 bat 'mvn -B -DskipTests clean package'
             }
         }
@@ -32,7 +32,7 @@ pipeline {
             agent any
             steps {
                 withSonarQubeEnv('sonar') {
-                    bat 'mvn sonar:sonar'
+                    bat 'mvn sonar:sonar1'
                 }
             }
          }
