@@ -12,6 +12,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo 'smth'
                 bat 'mvn -B -DskipTests clean package'
             }
         }
